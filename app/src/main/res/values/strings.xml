@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AppTest</string>
+    <string name="title_home">Home</string>
+    <string name="title_settings">Settings</string>
+    <string name="title_add_new">Add new</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="nameNew">Name of a Random</string>
+    <string name="listRandom">Type by commas, spaces or dots</string>
+    <string name="AddButtonText">Add</string>
+    <string name="AlertTitleDelete">Delete a random?</string>
+    <string name="MessageAlert">Are you sure?</string>
+    <string name="Yes">Yes</string>
+    <string name="No">No</string>
+    <string name="toastFoundMatch">This word already exist</string>
+    <string name="TitleRandom">Get random value?</string>
+    <string name="fillFields">Fill all the fields</string>
+</resources>
