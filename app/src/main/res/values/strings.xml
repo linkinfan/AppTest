@@ -16,4 +16,5 @@
     <string name="toastFoundMatch">This word already exist</string>
     <string name="TitleRandom">Get random value?</string>
     <string name="fillFields">Fill all the fields</string>
+    <string name="TitleResultRandom">You result is</string>
 </resources>

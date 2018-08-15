@@ -207,9 +207,9 @@ public class AddFragment extends Fragment {
                     }
                     db.randomsDao().insertAll(new Randoms(nameS, listS));
 
-//                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//                    FragmentTransaction transaction = fragmentManager.beginTransaction();
-//                    transaction.replace(R.id.container, new HomeFragment()).commit();
+                    FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+                    FragmentTransaction transaction = fragmentManager.beginTransaction();
+                    transaction.replace(R.id.container, new HomeFragment()).commit();
                     Log.d("mCount",valueOf(mCount));
                     mCount = 0;
                 }

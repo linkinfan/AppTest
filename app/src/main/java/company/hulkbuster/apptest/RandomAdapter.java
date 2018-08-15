@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.List;
+import java.util.Random;
+import java.util.regex.Pattern;
 
 import static java.lang.String.valueOf;
 
@@ -47,18 +49,30 @@ class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder> {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 
-                        Log.d("RANDOM SIZE",valueOf(getItemCount()));
                         String element = db.randomsDao().getByID(position+1);
                         Log.d("ELEMENT",element);
-                        String[] separeted = element.split("|");
-                        int rand = (int)(Math.random() * getItemCount());
-                        Log.d("Random number",valueOf(rand));
+                        String[] separeted = element.split(Pattern.quote("|"));
+                        Log.d("RANDOM SIZE",String.valueOf(separeted.length-1));
+                        Random rnd = new Random();
+                        int rand = rnd.nextInt(separeted.length-1);
+                        Log.d("Random number",String.valueOf(rand + 1));
                         String getRandom = separeted[rand];
-                        for (int i = 0; i < separeted.length; i++) {
-                            Log.d("Element #" + i,separeted[i]);
 
-                        }
-                        Toast.makeText(holder.itemView.getContext(), getRandom, Toast.LENGTH_LONG).show();
+
+                        AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
+                        builder.setTitle(R.string.TitleResultRandom)
+                                .setMessage(getRandom.toUpperCase())
+                                .setCancelable(false)
+                                .setNegativeButton("OK",
+                                        new DialogInterface.OnClickListener() {
+                                            public void onClick(DialogInterface dialog, int id) {
+                                                dialog.cancel();
+                                            }
+                                        });
+                        AlertDialog alert = builder.create();
+                        alert.show();
+
+
                     }
 
                 });
