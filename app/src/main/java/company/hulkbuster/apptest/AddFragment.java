@@ -3,21 +3,15 @@ package company.hulkbuster.apptest;
 import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.internal.BottomNavigationItemView;
-import android.support.design.internal.BottomNavigationMenu;
-import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -28,8 +22,6 @@ import org.apache.commons.lang3.StringUtils;
 import org.apmem.tools.layouts.FlowLayout;
 
 import java.util.ArrayList;
-
-import static java.lang.String.valueOf;
 
 
 /**
@@ -149,7 +141,7 @@ public class AddFragment extends Fragment {
                                     lin.removeView(newB);
                                     array.remove(newB.getText());
                                     --mCount;
-                                    Toast.makeText(AddHolder.getContext(), "Word was deleted", Toast.LENGTH_LONG).show();
+                                    Toast.makeText(AddHolder.getContext(), "Word was deleted", Toast.LENGTH_SHORT).show();
                                 }
 
                             });
@@ -174,7 +166,7 @@ public class AddFragment extends Fragment {
                                 lin.removeView(newB);
                                 array.remove(newB.getText());
                                 --mCount;
-                                Toast.makeText(AddHolder.getContext(), getString(R.string.toastFoundMatch), Toast.LENGTH_LONG).show();
+                                Toast.makeText(AddHolder.getContext(), getString(R.string.toastFoundMatch), Toast.LENGTH_SHORT).show();
                                 break backIS;
                             } else {
                             }
@@ -208,14 +200,14 @@ public class AddFragment extends Fragment {
                         listS += array.get(i) + " | ";
                     }
                     db.randomsDao().insertAll(new Randoms(nameS, listS));
-
+                    View view = getActivity().findViewById(R.id.navigation_home);
+                    view.performClick();
                     FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
                     FragmentTransaction transaction = fragmentManager.beginTransaction();
                     transaction.replace(R.id.container, new HomeFragment()).commit();
-                    Log.d("mCount",valueOf(mCount));
                     mCount = 0;
                 }
-                else { Toast.makeText(AddHolder.getContext(),R.string.fillFields,Toast.LENGTH_LONG).show(); }
+                else { Toast.makeText(AddHolder.getContext(),R.string.fillFields,Toast.LENGTH_SHORT).show(); }
             }
         });
         return AddHolder;

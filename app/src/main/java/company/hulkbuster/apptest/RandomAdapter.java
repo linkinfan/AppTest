@@ -1,5 +1,6 @@
 package company.hulkbuster.apptest;
 import android.arch.persistence.room.Room;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
@@ -32,17 +33,18 @@ class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder> {
 
     @Override
     public void onBindViewHolder(final RandomAdapter.ViewHolder holder, final int position) {
+        final Context context = holder.itemView.getContext();
         holder.nameRandom.setText(randomsList.get(position).getNameR());
         holder.listRandoms.setText(randomsList.get(position).getListR().replace("|"," "));
         holder.rowLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final AppDatabase db = Room.databaseBuilder(holder.itemView.getContext(), AppDatabase.class, "production")
+                final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, "production")
                         .allowMainThreadQueries()
                         .build();
 
                 AlertDialog.Builder ad;
-                ad = new AlertDialog.Builder(holder.itemView.getContext());
+                ad = new AlertDialog.Builder(context);
                 ad.setTitle(R.string.TitleRandom);
                 ad.setMessage(R.string.MessageAlert);
                 ad.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
@@ -50,16 +52,13 @@ class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder> {
                     public void onClick(DialogInterface dialog, int which) {
 
                         String element = db.randomsDao().getByID(position+1);
-                        Log.d("ELEMENT",element);
                         String[] separeted = element.split(Pattern.quote("|"));
-                        Log.d("RANDOM SIZE",String.valueOf(separeted.length-1));
                         Random rnd = new Random();
                         int rand = rnd.nextInt(separeted.length-1);
-                        Log.d("Random number",String.valueOf(rand + 1));
                         String getRandom = separeted[rand];
 
 
-                        AlertDialog.Builder builder = new AlertDialog.Builder(holder.itemView.getContext());
+                        AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setTitle(R.string.TitleResultRandom)
                                 .setMessage(getRandom.toUpperCase())
                                 .setCancelable(false)
@@ -83,6 +82,35 @@ class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder> {
                 });
                 AlertDialog alertDialog = ad.create();
                 alertDialog.show();
+            }
+        });
+        holder.rowLinear.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+
+                AlertDialog.Builder ad;
+                ad = new AlertDialog.Builder(context);
+                ad.setTitle(R.string.AlertTitleDelete);
+                ad.setMessage(R.string.MessageAlert);
+                ad.setPositiveButton(R.string.Yes, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        final AppDatabase db = Room.databaseBuilder(context, AppDatabase.class, "production")
+                                .allowMainThreadQueries()
+                                .build();
+
+                        db.randomsDao().deleteByUserId(position+1);
+                    }
+
+                });
+                ad.setNegativeButton(R.string.No, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                AlertDialog alertDialog = ad.create();
+                alertDialog.show();
+                return true;
             }
         });
     }

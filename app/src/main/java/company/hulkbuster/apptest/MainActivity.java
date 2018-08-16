@@ -7,6 +7,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -31,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
                     transaction.replace(R.id.container, new SettingsFragment()).commit();
                     return true;
             }
-
             return false;
         }
     };
@@ -46,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         transaction.replace(R.id.container, new HomeFragment()).commit();
         BottomNavigationView navigation = findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
+        View view = findViewById(R.id.navigation_home);
+        view.performClick();
 
     }
 }

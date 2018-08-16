@@ -1,6 +1,7 @@
 package company.hulkbuster.apptest;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.OnConflictStrategy;
 import android.arch.persistence.room.Query;
@@ -19,4 +20,7 @@ public interface RandomsDao {
 
     @Query("SELECT listR FROM Randoms WHERE ID = (:selectId)")
     String getByID(int selectId);
+
+    @Query("DELETE FROM Randoms WHERE ID = :userId")
+    void deleteByUserId(long userId);
 }
