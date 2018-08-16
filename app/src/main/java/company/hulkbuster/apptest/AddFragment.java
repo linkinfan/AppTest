@@ -147,7 +147,8 @@ public class AddFragment extends Fragment {
                                 @Override
                                 public void onClick(DialogInterface dialog, int which) {
                                     lin.removeView(newB);
-                                    array.remove(bText);
+                                    array.remove(newB.getText());
+                                    --mCount;
                                     Toast.makeText(AddHolder.getContext(), "Word was deleted", Toast.LENGTH_LONG).show();
                                 }
 
@@ -163,6 +164,7 @@ public class AddFragment extends Fragment {
                         }
                     });
 
+                    //Already exist
                     backIS:
                     for (int i = 0; i < array.size(); i++) {
                         for (int j = 0; j < array.size(); j++) {

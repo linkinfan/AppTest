@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">AppTest</string>
+    <string name="title_home">Домой</string>
+    <string name="title_settings">Настройки</string>
+    <string name="title_add_new">Добавить новый</string>
+    <string name="hello_blank_fragment">Привествующий вас пустой фрагмент</string>
+    <string name="nameNew">Название случайности</string>
+    <string name="listRandom">Вводите через запятую, пробел или точку</string>
+    <string name="AddButtonText">Добавить</string>
+    <string name="AlertTitleDelete">Удалить элемент?</string>
+    <string name="MessageAlert">Вы уверены?</string>
+    <string name="Yes">Да</string>
+    <string name="No">Нет</string>
+    <string name="toastFoundMatch">Это слово уже существует</string>
+    <string name="TitleRandom">Получить случайный элемент</string>
+    <string name="fillFields">Заполните все поля</string>
+    <string name="TitleResultRandom">Ваш результат:</string>
+    <string name="app_color">Цвет приложения</string>
+    <string name="blue">Синий</string>
+    <string name="red">Красный</string>
+    <string name="dark">Темный</string>
+</resources>

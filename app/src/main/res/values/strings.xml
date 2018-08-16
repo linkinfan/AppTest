@@ -9,12 +9,16 @@
     <string name="nameNew">Name of a Random</string>
     <string name="listRandom">Type by commas, spaces or dots</string>
     <string name="AddButtonText">Add</string>
-    <string name="AlertTitleDelete">Delete a random?</string>
+    <string name="AlertTitleDelete">Delete an element?</string>
     <string name="MessageAlert">Are you sure?</string>
     <string name="Yes">Yes</string>
     <string name="No">No</string>
     <string name="toastFoundMatch">This word already exist</string>
-    <string name="TitleRandom">Get random value?</string>
+    <string name="TitleRandom">Get a random value</string>
     <string name="fillFields">Fill all the fields</string>
-    <string name="TitleResultRandom">You result is</string>
+    <string name="TitleResultRandom">You result is: </string>
+    <string name="app_color">App color</string>
+    <string name="blue">Blue</string>
+    <string name="red">Red</string>
+    <string name="dark">Dark</string>
 </resources>
