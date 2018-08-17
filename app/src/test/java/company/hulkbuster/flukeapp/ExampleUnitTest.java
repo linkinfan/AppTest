@@ -1,4 +1,4 @@
-package company.hulkbuster.apptest;
+package company.hulkbuster.flukeapp;
 
 import org.junit.Test;
 

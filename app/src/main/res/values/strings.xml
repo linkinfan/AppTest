@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AppTest</string>
+    <string name="app_name">FlukeApp</string>
     <string name="title_home">Home</string>
     <string name="title_settings">Settings</string>
     <string name="title_add_new">Add new</string>

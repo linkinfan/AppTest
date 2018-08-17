@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">AppTest</string>
+    <string name="app_name">FlukeApp</string>
     <string name="title_home">Домой</string>
     <string name="title_settings">Настройки</string>
     <string name="title_add_new">Добавить новый</string>

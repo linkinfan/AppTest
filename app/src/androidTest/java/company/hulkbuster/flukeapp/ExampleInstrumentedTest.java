@@ -1,4 +1,4 @@
-package company.hulkbuster.apptest;
+package company.hulkbuster.flukeapp;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;
