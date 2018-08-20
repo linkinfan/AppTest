@@ -53,7 +53,9 @@ class RandomAdapter extends RecyclerView.Adapter<RandomAdapter.ViewHolder> {
                         String[] separated = element.split(Pattern.quote("|"));
                         Random rnd = new Random();
                         int rand = rnd.nextInt(separated.length-1);
+
                         String getRandom = separated[rand];
+
                         AlertDialog.Builder builder = new AlertDialog.Builder(context);
                         builder.setTitle(R.string.TitleResultRandom)
                                 .setMessage(getRandom.toUpperCase())

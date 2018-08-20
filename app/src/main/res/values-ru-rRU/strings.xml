@@ -6,7 +6,7 @@
     <string name="title_add_new">Добавить новый</string>
     <string name="hello_blank_fragment">Привествующий вас пустой фрагмент</string>
     <string name="nameNew">Название случайности</string>
-    <string name="listRandom">Вводите через запятую, пробел или точку</string>
+    <string name="listRandom">Вводите через запятую или точку</string>
     <string name="AddButtonText">Добавить</string>
     <string name="AlertTitleDelete">Удалить элемент?</string>
     <string name="MessageAlert">Вы уверены?</string>
@@ -20,4 +20,5 @@
     <string name="blue">Синий</string>
     <string name="red">Красный</string>
     <string name="dark">Темный</string>
+    <string name="changeStyle">Стиль был изменен. Пожалуйста, перезапустите приложение.</string>
 </resources>

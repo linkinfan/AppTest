@@ -48,17 +48,18 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        int res = 0;
-//        mSettings = getSharedPreferences(APP_PREFERENCES, getApplicationContext().MODE_PRIVATE);
+        int res = 0;
+        mSettings = getSharedPreferences(APP_PREFERENCES, getApplicationContext().MODE_PRIVATE);
 //        SharedPreferences.Editor editor = mSettings.edit();
 //        editor.putInt(APP_PREFERENCES_STYLE, R.style.AppTheme);
 //        editor.apply();
-//        if (mSettings.contains(APP_PREFERENCES_STYLE)) {
-//            // Получаем число из настроек
-//            res = mSettings.getInt(APP_PREFERENCES_STYLE, 0);
-//            // Выводим на экран данные из настроек
-//        }
-//        setTheme(res);
+        if (mSettings.contains(APP_PREFERENCES_STYLE)) {
+            // Получаем число из настроек
+            res = mSettings.getInt(APP_PREFERENCES_STYLE, 0);
+            // Выводим на экран данные из настроек
+        }
+        Log.d("Parameter is # ",String.valueOf(res));
+        setTheme(res);
         setContentView(R.layout.activity_main);
 
         FragmentManager fragmentManager = getSupportFragmentManager();

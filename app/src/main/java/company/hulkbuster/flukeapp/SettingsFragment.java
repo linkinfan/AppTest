@@ -6,9 +6,11 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Layout;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
@@ -31,7 +33,9 @@ public class SettingsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    RadioButton radioBlue, radioRed,radioDark;
+    RadioGroup radioG;
+    RadioButton radioBlue, radioRed, radioDark;
+    Button color;
     View SettingsHolder;
     private SharedPreferences mSettings;
 
@@ -77,40 +81,45 @@ public class SettingsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         SettingsHolder = inflater.inflate(R.layout.fragment_settings, container, false);
+        radioG = SettingsHolder.findViewById(R.id.radioGroup);
         radioBlue = SettingsHolder.findViewById(R.id.radioBlue);
-        radioBlue.setOnClickListener(radioButtonOnClick);
         radioRed = SettingsHolder.findViewById(R.id.radioRed);
-        radioRed.setOnClickListener(radioButtonOnClick);
         radioDark = SettingsHolder.findViewById(R.id.radioDark);
-        radioDark.setOnClickListener(radioButtonOnClick);
+        color = SettingsHolder.findViewById(R.id.buttonColor);
+
+        color.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                switch (radioG.getCheckedRadioButtonId()) {
+                    case R.id.radioBlue:
+                        mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, getContext().MODE_PRIVATE);
+                        SharedPreferences.Editor editor = mSettings.edit();
+                        editor.putInt(APP_PREFERENCES_STYLE, R.style.AppTheme);
+                        editor.apply();
+                  //      Toast.makeText(getContext(), R.string.changeStyle + "to Blue Style" + R.string.pleaseRestart, Toast.LENGTH_LONG).show();
+                        break;
+                    case R.id.radioRed:
+                        mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, getContext().MODE_PRIVATE);
+                        SharedPreferences.Editor editor2 = mSettings.edit();
+                        editor2.putInt(APP_PREFERENCES_STYLE, R.style.RedTheme);
+                    //    Toast.makeText(getContext(), R.string.changeStyle + "to Red Style." + R.string.pleaseRestart, Toast.LENGTH_LONG).show();
+                        editor2.apply();
+                        break;
+                    case R.id.radioDark:
+                        mSettings = getActivity().getSharedPreferences(APP_PREFERENCES, getContext().MODE_PRIVATE);
+                        SharedPreferences.Editor editor3 = mSettings.edit();
+                        editor3.putInt(APP_PREFERENCES_STYLE, R.style.DarkTheme);
+                        editor3.apply();
+                   //     Toast.makeText(getContext(), R.string.changeStyle + "to Dark Style" + R.string.pleaseRestart, Toast.LENGTH_LONG).show();
+                        break;
+                }
+            }
+        });
 
         return SettingsHolder;
     }
 
-    View.OnClickListener radioButtonOnClick = new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            RadioButton rb = (RadioButton) v;
-            switch (rb.getId()) {
-                case R.id.radioBlue:
-                    SharedPreferences.Editor editor = mSettings.edit();
-                    editor.putInt(APP_PREFERENCES_STYLE, R.style.AppTheme);
-                    editor.apply();
-                    break;
-                case R.id.radioRed:
-                    SharedPreferences.Editor editor2 = mSettings.edit();
-                    editor2.putInt(APP_PREFERENCES_STYLE, R.style.RedTheme);
-                    editor2.apply();
-                    break;
-                case R.id.radioDark:
-                    SharedPreferences.Editor editor3 = mSettings.edit();
-                    editor3.putInt(APP_PREFERENCES_STYLE, R.style.DarkTheme);
-                    editor3.apply();
-                    break;
-            }
-            Toast.makeText(getContext(),R.string.changeStyle,Toast.LENGTH_LONG).show();
-        }
-    };
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
@@ -124,6 +133,28 @@ public class SettingsFragment extends Fragment {
         if (context instanceof OnFragmentInteractionListener) {
             mListener = (OnFragmentInteractionListener) context;
         } else {
+
+
+            mSettings = getActivity().getPreferences(Context.MODE_PRIVATE);
+            int getStyle = mSettings.getInt(APP_PREFERENCES_STYLE,0);
+
+            Log.d("STYLE!!!!!",String.valueOf(getStyle));
+            if(getStyle==R.style.AppTheme)
+            {
+                radioBlue.setChecked(true);
+            }
+            else
+            if(getStyle==R.style.RedTheme)
+            {
+                radioRed.setChecked(true);
+
+            }
+            else if(getStyle==R.style.DarkTheme)
+            {
+                radioDark.setChecked(true);
+            }
+
+
         }
     }
 

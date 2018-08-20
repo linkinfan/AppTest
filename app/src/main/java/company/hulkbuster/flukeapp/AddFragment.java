@@ -110,8 +110,7 @@ public class AddFragment extends Fragment {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 String stroka = edText.getText().toString();
-                if ((StringUtils.countMatches(stroka, ",") == 1 | StringUtils.countMatches(stroka, " ") == 1 |
-                        StringUtils.countMatches(stroka, ".") == 1) &
+                if ((StringUtils.countMatches(stroka, ",") == 1 | StringUtils.countMatches(stroka, ".") == 1) &
                         stroka.length() > 1 & stroka != "") {
 
                     final Button newB = new Button(AddHolder.getContext());
@@ -174,7 +173,7 @@ public class AddFragment extends Fragment {
                         }
                     }
 
-                } else if (StringUtils.countMatches(stroka, ",") > 1 | StringUtils.countMatches(stroka, ".") > 1 | StringUtils.countMatches(stroka, " ") > 1)
+                } else if (StringUtils.countMatches(stroka, ",") > 1 | StringUtils.countMatches(stroka, ".") > 1 )
 
                 {
                     edText.setText("");
